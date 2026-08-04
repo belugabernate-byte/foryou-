@@ -117,7 +117,7 @@ function startTyping(){
 }
 
 // Ambient falling petals
-const petalGlyphs = ["🌸", "🌷", "🌹", "❤"];
+const petalGlyphs = ["💐", "🌷", "🌹", "💖"];
 
 function createPetal(){
 
@@ -151,6 +151,13 @@ galleryBtn.onclick = () => {
 closeGallery.onclick = () => {
     galleryPopup.style.display = "none";
 };
+
+// If a photo file is missing, show a tidy placeholder instead of a broken-image icon
+document.querySelectorAll(".polaroid img").forEach((img) => {
+    img.addEventListener("error", () => {
+        img.closest(".polaroid").classList.add("polaroid--empty");
+    });
+});
 
 // Bouquet reveal
 const bouquetBtn = document.getElementById("bouquetBtn");
